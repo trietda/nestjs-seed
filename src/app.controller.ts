@@ -1,4 +1,6 @@
-import { Controller, Get, Version, VERSION_NEUTRAL } from '@nestjs/common';
+import {
+  Controller, Get, Version, VERSION_NEUTRAL,
+} from '@nestjs/common';
 import {
   HealthCheck,
   HealthCheckService,
@@ -6,12 +8,11 @@ import {
 } from '@nestjs/terminus';
 
 @Controller()
-export class AppController {
+export default class AppController {
   constructor(
     private health: HealthCheckService,
     private db: TypeOrmHealthIndicator,
   ) {}
-
 
   @Version(VERSION_NEUTRAL)
   @Get('healthcheck')

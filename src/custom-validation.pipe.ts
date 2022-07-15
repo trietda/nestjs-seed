@@ -48,5 +48,5 @@ export default class CustomValidationPipe extends ValidationPipe {
       exceptionFactory,
       whitelist: true,
     });
-  } 
+  }
 }

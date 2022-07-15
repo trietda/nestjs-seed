@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
-import CustomTypeOrmLogger from './custom-typeorm-logger';
 import databseConfig from 'src/config/databse.config';
+import CustomTypeOrmLogger from './custom-typeorm-logger';
 
 @Module({
   imports: [
@@ -24,6 +24,6 @@ import databseConfig from 'src/config/databse.config';
   ],
   exports: [
     TypeOrmModule,
-  ]
+  ],
 })
 export default class DatabaseModule {}

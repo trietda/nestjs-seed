@@ -32,7 +32,7 @@ export default class CustomTypeOrmLogger implements TypeOrmLogger {
   logSchemaBuild(message: string) {
     this.logger.log({
       message,
-      msg: 'Schema build'
+      msg: 'Schema build',
     });
   }
 
@@ -40,14 +40,13 @@ export default class CustomTypeOrmLogger implements TypeOrmLogger {
     this.logger.log({
       message,
       msg: 'Migration',
-    })
+    });
   }
 
-  log(level: "log" | "info" | "warn", message: any) {
+  log(level: 'log' | 'info' | 'warn', message: any) {
     this.logger.log({
       level,
       msg: message,
     });
   }
 }
-

@@ -3,7 +3,7 @@ import { ConfigService } from '@nestjs/config';
 import { HttpAdapterHost, NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { Logger } from 'nestjs-pino';
-import { AppModule } from './app.module';
+import AppModule from './app.module';
 import CustomValidationPipe from './custom-validation.pipe';
 import AllExceptionFilter from './filter/all.filter';
 import NotFoundExceptionFilter from './filter/not-found.filter';
@@ -15,7 +15,7 @@ async function bootstrap() {
 
   app.useLogger(app.get(Logger));
   app.useGlobalPipes(new CustomValidationPipe());
-  
+
   const httpAdapterHost = app.get(HttpAdapterHost);
   app.useGlobalFilters(new AllExceptionFilter(httpAdapterHost));
   app.useGlobalFilters(new NotFoundExceptionFilter(httpAdapterHost));
@@ -31,7 +31,7 @@ async function bootstrap() {
       { path: '/healthcheck', method: RequestMethod.GET },
     ],
   });
-  
+
   const config = new DocumentBuilder()
     .setTitle(configService.get('swagger.title'))
     .setDescription(configService.get('swagger.description'))

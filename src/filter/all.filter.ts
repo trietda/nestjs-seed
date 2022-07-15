@@ -36,15 +36,13 @@ export default class AllExceptionFilter implements ExceptionFilter {
       this.logger.error(error);
     }
 
-    const httpStatus =
-      exception instanceof HttpException
-        ? exception.getStatus()
-        : HttpStatus.INTERNAL_SERVER_ERROR;
+    const httpStatus = exception instanceof HttpException
+      ? exception.getStatus()
+      : HttpStatus.INTERNAL_SERVER_ERROR;
 
-    const responseBody =
-      exception instanceof HttpException
-        ? { message: MESSAGE_MAP[httpStatus] || exception.message }
-        : null;
+    const responseBody = exception instanceof HttpException
+      ? { message: MESSAGE_MAP[httpStatus] || exception.message }
+      : null;
 
     httpAdapter.reply(ctx.getResponse(), responseBody, httpStatus);
   }

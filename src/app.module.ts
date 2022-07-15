@@ -4,7 +4,7 @@ import { TerminusModule } from '@nestjs/terminus';
 import { LoggerModule } from 'nestjs-pino';
 import { v4 as uuid } from 'uuid';
 import DatabaseModule from './module/database/database.module';
-import { AppController } from './app.controller';
+import AppController from './app.controller';
 import appConfig from './config/app.config';
 import swaggerConfig from './config/swagger.config';
 
@@ -20,7 +20,7 @@ import swaggerConfig from './config/swagger.config';
     LoggerModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
-      useFactory: (configService: ConfigService) => ({
+      useFactory: () => ({
         pinoHttp: {
           autoLogging: false,
           quietReqLogger: true,
@@ -35,11 +35,11 @@ import swaggerConfig from './config/swagger.config';
               ? { target: 'pino-pretty' }
               : undefined,
         },
-      })
+      }),
     }),
     TerminusModule,
     DatabaseModule,
   ],
   controllers: [AppController],
 })
-export class AppModule {}
+export default class AppModule {}
