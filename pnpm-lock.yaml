@@ -22,6 +22,7 @@ specifiers:
   '@typescript-eslint/parser': ^5.0.0
   class-transformer: ^0.5.1
   class-validator: ^0.13.2
+  dotenv: ^16.0.1
   eslint: ^8.19.0
   eslint-config-airbnb-base: ^15.0.0
   eslint-config-airbnb-typescript: ^17.0.0
@@ -59,6 +60,7 @@ dependencies:
   '@nestjs/typeorm': 9.0.0_ehux2q6c4fs6dlavlaiejqeefy
   class-transformer: 0.5.1
   class-validator: 0.13.2
+  dotenv: 16.0.1
   express: 4.18.1
   mysql2: 2.3.3
   nestjs-pino: 2.6.0_r5kkbpjkx66ztxutfovnv47xcm
