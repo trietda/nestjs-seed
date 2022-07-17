@@ -4,7 +4,7 @@ import { Logger as TypeOrmLogger, QueryRunner } from 'typeorm';
 export default class CustomTypeOrmLogger implements TypeOrmLogger {
   private logger = new Logger(CustomTypeOrmLogger.name);
 
-  logQuery(query: string, parameters?: any[], queryRunner?: QueryRunner) {
+  logQuery(query: string, parameters?: unknown[], queryRunner?: QueryRunner) {
     this.logger.log({
       query,
       parameters,
@@ -13,7 +13,7 @@ export default class CustomTypeOrmLogger implements TypeOrmLogger {
     });
   }
 
-  logQueryError(error: string | Error, query: string, parameters?: any[]) {
+  logQueryError(error: string | Error, query: string, parameters?: unknown[]) {
     this.logger.error({
       query,
       parameters,
@@ -21,7 +21,7 @@ export default class CustomTypeOrmLogger implements TypeOrmLogger {
     });
   }
 
-  logQuerySlow(time: number, query: string, parameters?: any[]) {
+  logQuerySlow(time: number, query: string, parameters?: unknown[]) {
     this.logger.warn({
       query,
       parameters,
@@ -43,7 +43,7 @@ export default class CustomTypeOrmLogger implements TypeOrmLogger {
     });
   }
 
-  log(level: 'log' | 'info' | 'warn', message: any) {
+  log(level: 'log' | 'info' | 'warn', message: unknown) {
     this.logger.log({
       level,
       msg: message,
