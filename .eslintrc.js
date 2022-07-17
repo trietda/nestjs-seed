@@ -1,3 +1,7 @@
+const baseRules = require('eslint-config-airbnb-base/rules/style');
+
+const [_, ...restricted] = baseRules.rules['no-restricted-syntax'];
+
 module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -19,5 +23,13 @@ module.exports = {
     jest: true,
   },
   ignorePatterns: ['.eslintrc.js'],
-  rules: {},
+  rules: {
+    'no-param-reassign': ['error', { props: false }],
+    'no-restricted-syntax': [
+      'error',
+      ...restricted.filter((rule) => rule.selector !== 'ForOfStatement'),
+    ],
+    '@typescript-eslint/no-inferrable-types': 'off',
+    '@typescript-eslint/indent': 'off',
+  },
 };
